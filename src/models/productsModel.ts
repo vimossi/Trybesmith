@@ -18,6 +18,13 @@ const create = async (newProduct: INewProduct) => {
   };
 };
 
+const getAll = async () => {
+  const [products] = await connection.execute('SELECT * FROM Trybesmith.Products');
+
+  return products;
+};
+
 export default {
   create,
+  getAll,
 };

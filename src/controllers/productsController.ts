@@ -9,6 +9,13 @@ const create = async (req: Request, res: Response) => {
   return res.status(201).json({ item: product });
 };
 
+const getAll = async (_req: Request, res: Response) => {
+  const products = await productsService.getAll();
+
+  return res.status(200).json(products);
+};
+
 export default {
   create,
+  getAll,
 };

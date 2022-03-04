@@ -6,5 +6,6 @@ import validateJWT from '../auth/validateJWT';
 const products = Router();
 
 products.post('/', validateJWT, validateProducts, productsController.create);
+products.get('/', validateJWT, productsController.getAll);
 
 export default products;
