@@ -14,3 +14,8 @@ export interface IUserLogin {
   username: string,
   password: string
 }
+
+export interface INewProduct {
+  name: string,
+  amount: string
+}
