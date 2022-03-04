@@ -15,6 +15,6 @@ export default (req: Request, res: Response, next: NextFunction) => {
 
     next();
   } catch (err) {
-    return res.status(401).json({ error: 'Expired or invalid token' });
+    return res.status(401).json({ error: 'Invalid token' });
   }
 };
