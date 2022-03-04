@@ -1,5 +1,5 @@
 import { ResultSetHeader } from 'mysql2';
-import { IUserInfos, IUserPayload } from '../utils/interfaces';
+import { IUserInfos, IUserPayload, IUserLogin } from '../utils/interfaces';
 import connection from './connection';
 
 const create = async (user: IUserInfos): Promise<IUserPayload> => {
@@ -16,6 +16,18 @@ const create = async (user: IUserInfos): Promise<IUserPayload> => {
   };
 };
 
+const getUser = async (userLogin: IUserLogin): Promise<IUserPayload> => {
+  const [getByName] = await connection.execute(
+    'SELECT id, username FROM Trybesmith.Users WHERE username = (?) and password = (?);',
+    [userLogin.username, userLogin.password],
+  );
+
+  const [row] = getByName as IUserPayload[];
+
+  return row;
+};
+
 export default {
   create,
+  getUser,
 };

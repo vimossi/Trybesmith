@@ -9,3 +9,8 @@ export interface IUserPayload {
   id: number,
   username: string
 }
+
+export interface IUserLogin {
+  username: string,
+  password: string
+}
